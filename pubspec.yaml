@@ -50,6 +50,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mock_web_server: ^5.0.0-nullsafety.1
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
