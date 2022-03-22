@@ -42,20 +42,16 @@ class HomeViewModel extends BaseModel {
     accentIconTheme: const IconThemeData(color: Colors.white),
     dividerColor: Colors.white54,
   );
-  bool dark = false;
   ThemeData? _themeData;
   ThemeData? getTheme() => _themeData;
 
   themeNotifier() {
     StorageManager.readData('themeMode').then((value) {
       // print('value read from storage: ' + value.toString());
-      var themeMode = value;
+      var themeMode = value?? 'light';
       if (themeMode == 'light') {
-        dark = false;
         _themeData = lightTheme;
       } else {
-        //  print('setting dark theme');
-        dark = true;
         _themeData = darkTheme;
       }
       notifyListeners();
