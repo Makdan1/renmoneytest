@@ -26,31 +26,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  HomeViewModel themeNotifier = HomeViewModel();
-  var theme;
   @override
   void initState() {
     super.initState();
-    theme = themeNotifier.getTheme();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
-        builder: (context, theme, child) => MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'RenMoney app',
-              builder: (context, child) => Navigator(
-                key: locator<ProgressService>().progressNavigationKey,
-                onGenerateRoute: (settings) =>
-                    MaterialPageRoute(builder: (context) {
-                  return ProgressManager(child: child!);
-                }),
-              ),
-              theme: theme.getTheme(),
-              navigatorKey: locator<NavigationService>().navigationKey,
-              home: const AnimatedSplashScreen(),
-              onGenerateRoute: generateRoute,
-            ));
+    return Consumer<HomeViewModel>(builder: (context, theme, child) {
+      theme.themeNotifier();
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'RenMoney app',
+        builder: (context, child) => Navigator(
+          key: locator<ProgressService>().progressNavigationKey,
+          onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) {
+            return ProgressManager(child: child!);
+          }),
+        ),
+        // This get the selected saved theme
+        theme: theme.getTheme(),
+        // This initialize the navigator service
+        navigatorKey: locator<NavigationService>().navigationKey,
+        home: const AnimatedSplashScreen(),
+        onGenerateRoute: generateRoute,
+      );
+    });
   }
 }

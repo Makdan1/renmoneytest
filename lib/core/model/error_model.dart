@@ -1,3 +1,5 @@
+//Model for error api
+
 class ErrorModel {
   final dynamic _error;
 

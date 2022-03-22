@@ -4,10 +4,9 @@ import 'package:renmoneytest/utils/progressBarManager/dialog_models.dart';
 import 'package:renmoneytest/utils/progressBarManager/dialog_service.dart';
 
 class BaseModel extends ChangeNotifier {
-  //final Authentication _authenticationService = locator<Authentication>();
-  final ProgressService _dialogService = locator<ProgressService>();
+  //This makes the mode of the application available across all view models
+final ProgressService _dialogService = locator<ProgressService>();
   late ProgressResponse hh;
- // Data get currentUser => _authenticationService.currentUser;
 
   bool _busy = false;
   bool get busy => _busy;

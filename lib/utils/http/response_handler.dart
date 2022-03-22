@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:renmoneytest/core/model/error_model.dart';
 import 'package:renmoneytest/core/model/success_model.dart';
-
+// This handles the error or success response from the api
 handleResponse(http.Response response) {
   try {
     print('ResponseCode:: ${response.statusCode},   ResponseBody:: ${response.body}');

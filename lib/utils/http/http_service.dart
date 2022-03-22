@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:renmoneytest/utils/http/response_handler.dart';
-
+// This is the class where all Http related services are declared
+// This is the single class that manages the whole api call of the app
 class HttpService {
   final String _baseUrl;
 
@@ -69,7 +70,7 @@ class HttpService {
   getHeaders() async {
     return <String, String>{
       'Sourceappid': 'ckpu7zo0p0000gg5436coo7xs',
-      "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMzQ4OTkzOTQ5NjMzIiwiaWF0IjoxNjQ3ODY0MTAxLCJleHAiOjE2NDc5NTA1MDF9.hYEB2UoDytMRADWtQMRaGbNCghXjOVjAUVOHGiWySUBRXMM707RvP0sxzbAaY_meNkMY-VXJ5_AWJf7L9lOKHQ"
+      "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMzQ4OTkzOTQ5NjMzIiwiaWF0IjoxNjQ3OTQ2NjgwLCJleHAiOjE2NDgwMzMwODB9.j1jBY6ribdyfLkW-5_VC1w2BS9eUfs-TCCeNZxnG-28ZMxtLqbMF2ZOV-P83S9cLYA959l9sNWJu2h6bJofNCg"
     };
   }
 }

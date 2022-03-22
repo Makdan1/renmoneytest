@@ -3,6 +3,7 @@ import 'package:renmoneytest/core/model/clien_transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:renmoneytest/utils/colors.dart';
 
+// This is the item widget for the transaction access
 class TransactionsFeed extends StatelessWidget {
   final ClientTransaction clientTransactionDetails;
   final Function onPressed;

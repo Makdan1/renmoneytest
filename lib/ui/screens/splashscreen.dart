@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:renmoneytest/core/services/transaction_service.dart';
 import 'package:renmoneytest/utils/locator.dart';
 import 'package:renmoneytest/utils/router/navigation_service.dart';
 import 'package:renmoneytest/utils/router/route_names.dart';
@@ -25,14 +23,9 @@ class SplashScreenState extends State<AnimatedSplashScreen>
   }
 
   void navigationPage() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    var id = prefs.getString('profile');
-    if (id != null) {
-      // _authentication.alreadyLoggedIn();
-    } else {
       _navigationService.navigateReplacementTo(homeRoute);
-    }
+
   }
 
   @override
@@ -61,9 +54,8 @@ class SplashScreenState extends State<AnimatedSplashScreen>
           Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                     width: animation.value * 200, child: Image.asset("assets/images/logo.jpeg")),
-                // Text("renmoneytest",style: TextStyle(color: AppColors.primaryColor,fontWeight: FontWeight.bold, fontSize: 50),)
               ]),
         ],
       ),

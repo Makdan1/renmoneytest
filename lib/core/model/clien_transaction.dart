@@ -5,7 +5,7 @@
 /// entryDate : "2022-03-09T09:29:09+0000"
 /// currencyCode : "NGN"
 /// balance : "88900"
-
+//Model for Client Transaction api
 class ClientTransaction {
   ClientTransaction({
       int? transactionId, 

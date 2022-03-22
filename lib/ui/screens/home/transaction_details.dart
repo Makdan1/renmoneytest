@@ -2,10 +2,8 @@ import 'package:intl/intl.dart';
 import 'package:renmoneytest/core/model/clien_transaction.dart';
 import 'package:renmoneytest/ui/screens/home/home_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:renmoneytest/ui/widget/transaction_feed.dart';
 import 'package:renmoneytest/utils/colors.dart';
 import 'package:renmoneytest/utils/screensize.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 import 'package:renmoneytest/utils/locator.dart';
 import 'package:renmoneytest/utils/router/navigation_service.dart';
@@ -26,7 +24,7 @@ class LoginState extends State<TransactionDetails> {
   void initState() {
     super.initState();
   }
-
+// This screen displays the the transaction details from the list
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(

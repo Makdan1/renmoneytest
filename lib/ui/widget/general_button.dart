@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:renmoneytest/utils/colors.dart';
 
+
+//A button designed to be used throughout the app
 class GeneralButton extends StatelessWidget {
   final Function onPressed;
   final BorderRadius borderRadius;
@@ -26,8 +28,6 @@ class GeneralButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius,
               side: BorderSide(color:borderColor ),
-
-
 
             ),
             color: splashColor,

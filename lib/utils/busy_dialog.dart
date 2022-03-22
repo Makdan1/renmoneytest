@@ -8,13 +8,13 @@ class ArsProgressDialog {
   late final BuildContext context;
 
   /// Main widget of dialog,
-   final Widget? loadingWidget;
+  final Widget? loadingWidget;
 
   /// Whether dialog can dismiss by touching outside or not
   final bool? dismissable;
 
   /// This function will trigger when user dismisses dialog
- late final Function? onDismiss;
+  late final Function? onDismiss;
 
   /// Amount of background blur
   late final double blur;
@@ -23,10 +23,10 @@ class ArsProgressDialog {
   late final Color backgroundColor;
 
   /// Using safe area, dialog will keep padding from status bar, navigation bar and ...
-  late  final bool useSafeArea;
+  late final bool useSafeArea;
 
   /// Duration of blur and background color animation
-  late  final Duration animationDuration;
+  late final Duration animationDuration;
 
   /// Is dialog showing or not
   late bool _isShowing = false;
@@ -35,18 +35,18 @@ class ArsProgressDialog {
   _ArsProgressDialogWidget? _progressDialogWidget;
 
   /// Getter for _isShowing
-    bool get isShowing => _isShowing;
+  bool get isShowing => _isShowing;
 
   ArsProgressDialog(
-      this.context, {
-        this.backgroundColor= const Color(0x99000000),
-        this.blur= 0,
-        this.dismissable= true,
-        this.onDismiss ,
-         this.loadingWidget,
-        this.useSafeArea= false,
-        this.animationDuration= const Duration(milliseconds: 300),
-      }) {
+    this.context, {
+    this.backgroundColor = const Color(0x99000000),
+    this.blur = 0,
+    this.dismissable = true,
+    this.onDismiss,
+    this.loadingWidget,
+    this.useSafeArea = false,
+    this.animationDuration = const Duration(milliseconds: 300),
+  }) {
     _initProgress();
   }
 
@@ -56,7 +56,7 @@ class ArsProgressDialog {
       blur: blur,
       dismissable: dismissable!,
       backgroundColor: backgroundColor,
-     // onDismiss: onDismiss!,
+      // onDismiss: onDismiss!,
       loadingWidget: loadingWidget,
       animationDuration: animationDuration,
     );
@@ -111,9 +111,10 @@ class _ArsProgressDialogWidget extends StatelessWidget {
     required this.dismissable,
     // required this.onDismiss,
     required this.backgroundColor,
-     this.loadingWidget,
+    this.loadingWidget,
     required this.blur,
-    this.animationDuration= const Duration(milliseconds: 300), this.onDismiss,
+    this.animationDuration = const Duration(milliseconds: 300),
+    this.onDismiss,
   }) {
     loadingWidget = loadingWidget ??
         //loadingWidget =
@@ -164,7 +165,7 @@ class _DialogBackground extends StatelessWidget {
 
   /// Creates an background filter that applies a Gaussian blur.
   /// Default = 0
- late final double blur;
+  late final double blur;
 
   /// Background color
   final Color color;
@@ -173,15 +174,15 @@ class _DialogBackground extends StatelessWidget {
   final Duration animationDuration;
 
   /// Color Opacity
- late double _colorOpacity;
+  late double _colorOpacity;
 
   _DialogBackground(
       {required this.dialog,
-        required this.dismissable,
-        required this.blur,
-        required this.onDismiss,
-        this.animationDuration= const Duration(milliseconds: 300),
-        required this.color}) {
+      required this.dismissable,
+      required this.blur,
+      required this.onDismiss,
+      this.animationDuration = const Duration(milliseconds: 300),
+      required this.color}) {
     _colorOpacity = color.opacity;
   }
   bool shouldPop = true;
@@ -190,13 +191,11 @@ class _DialogBackground extends StatelessWidget {
     return TweenAnimationBuilder(
         tween: Tween<double>(begin: 0, end: 1),
         duration: animationDuration,
-        builder: (context,  val, child) {
+        builder: (context, val, child) {
           return Material(
             type: MaterialType.canvas,
-            color: color.withOpacity( _colorOpacity),
-            child:
-
-            WillPopScope(
+            color: color.withOpacity(_colorOpacity),
+            child: WillPopScope(
               onWillPop: () async {
                 if (dismissable ?? true) {
                   if (onDismiss != null) onDismiss!();
@@ -211,16 +210,16 @@ class _DialogBackground extends StatelessWidget {
                   GestureDetector(
                       onTap: dismissable ?? true
                           ? () {
-                        if (onDismiss != null) {
-                          onDismiss!();
-                        }
-                        Navigator.pop(context);
-                      }
+                              if (onDismiss != null) {
+                                onDismiss!();
+                              }
+                              Navigator.pop(context);
+                            }
                           : () {},
                       child: BackdropFilter(
                         filter: ImageFilter.blur(
-                          sigmaX: blur ,
-                          sigmaY:blur,
+                          sigmaX: blur,
+                          sigmaY: blur,
                         ),
                         child: Container(
                           color: Colors.transparent,

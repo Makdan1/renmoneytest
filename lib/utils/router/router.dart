@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:renmoneytest/ui/screens/home/transaction_details.dart';
 import 'package:renmoneytest/utils/router/route_names.dart';
 
+// Setup navigators to their screens
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case homeRoute:

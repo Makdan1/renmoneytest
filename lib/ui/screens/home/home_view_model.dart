@@ -1,37 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:renmoneytest/core/model/clien_transaction.dart';
 import 'package:renmoneytest/core/model/error_model.dart';
-import 'package:renmoneytest/core/services/color_preference.dart';
 import 'package:renmoneytest/core/services/transaction_service.dart';
 import 'package:renmoneytest/utils/base_model.dart';
 import 'package:renmoneytest/utils/locator.dart';
-import 'package:renmoneytest/utils/router/navigation_service.dart';
 import 'package:renmoneytest/utils/store.dart';
 
 class HomeViewModel extends BaseModel {
-
+  //This get the service functions from the service class
   final TransactionService transactionService = locator<TransactionService>();
-  final NavigationService _navigationService = locator<NavigationService>();
 
+  // This get the list of data from the service class and send it to views
   Future<List<ClientTransaction>> transactionList() async {
-  //setBusy(true);
-  var result = await transactionService.getTransactionList();
-  if (result is ErrorModel) {
-  notifyListeners();
-  throw Exception('Failed to load internet');
-  //return ErrorModel(result.error);
-  }
-  print(result);
-  return result;
+    var result = await transactionService.getTransactionList();
+    if (result is ErrorModel) {
+      notifyListeners();
+      throw Exception('Failed to load internet');
+    }
+    return result;
   }
 
 
 
   //Theme settings
-  late final darkTheme = ThemeData(
+  final darkTheme = ThemeData(
     primarySwatch: Colors.grey,
     primaryColor: Colors.black,
-
     brightness: Brightness.dark,
     backgroundColor: const Color(0xFF212121),
     accentColor: Colors.white,
@@ -39,7 +33,7 @@ class HomeViewModel extends BaseModel {
     dividerColor: Colors.black12,
   );
 
-  final lightTheme = ThemeData(
+  late final lightTheme = ThemeData(
     primarySwatch: Colors.grey,
     primaryColor: Colors.white,
     brightness: Brightness.light,
@@ -48,20 +42,19 @@ class HomeViewModel extends BaseModel {
     accentIconTheme: const IconThemeData(color: Colors.white),
     dividerColor: Colors.white54,
   );
-    bool dark = false;
+  bool dark = false;
   ThemeData? _themeData;
   ThemeData? getTheme() => _themeData;
 
-  ThemeNotifier() {
+  themeNotifier() {
     StorageManager.readData('themeMode').then((value) {
-      print('value read from storage: ' + value.toString());
+      // print('value read from storage: ' + value.toString());
       var themeMode = value;
       if (themeMode == 'light') {
         dark = false;
-
         _themeData = lightTheme;
       } else {
-        print('setting dark theme');
+        //  print('setting dark theme');
         dark = true;
         _themeData = darkTheme;
       }
@@ -80,5 +73,6 @@ class HomeViewModel extends BaseModel {
     StorageManager.saveData('themeMode', 'light');
     notifyListeners();
   }
+
 
 }
